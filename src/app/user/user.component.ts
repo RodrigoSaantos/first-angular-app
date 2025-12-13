@@ -14,4 +14,8 @@ export class UserComponent {
   get imagePath(): string {
     return 'assets/users/' + this.selectedUser.avatar;
   }
+
+  onSelectedUser(): void {
+    alert(`User: ${this.selectedUser.name}`);
+  }
 }

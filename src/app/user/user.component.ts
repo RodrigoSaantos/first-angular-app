@@ -16,6 +16,7 @@ export class UserComponent {
   }
 
   onSelectedUser(): void {
-    alert(`User: ${this.selectedUser.name}`);
+    const randomUserIndex = Math.floor(Math.random() * DUMMY_USERS.length);
+    this.selectedUser = DUMMY_USERS[randomUserIndex];
   }
 }

@@ -1,4 +1,4 @@
-import { Component, computed, Input, input } from '@angular/core';
+import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 
 
 @Component({
@@ -7,11 +7,17 @@ import { Component, computed, Input, input } from '@angular/core';
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  avatar = input.required<string>();
-  name = input.required<string>();
+  @Input({required: true}) id!: string;
+  @Input({required: true}) avatar!: string;
+  @Input({required: true}) name!: string;
 
-  imagePath = computed(() => `assets/users/${this.avatar()}`);
+  @Output() select = new EventEmitter<string>();
+
+  get imagePath(): string {
+    return `assets/users/${this.avatar}`;
+  }
 
   onSelectedUser(): void {
+    this.select.emit(this.id);
   }
 }

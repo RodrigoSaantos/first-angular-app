@@ -18,7 +18,7 @@ export class TasksComponent {
   constructor(private taskService: TaskService) {}
 
   get selectedUserTasks() {
-    return 
+    return this.taskService.getUserTasks(this.userId);
   }
 
   onCompleteTask(taskId: string): void {
@@ -29,11 +29,7 @@ export class TasksComponent {
     this.isAddingTask = true;
   }
 
-  onCancelAddTask(): void {
-    this.isAddingTask = false;
-  }
-
-  onAddTask(taskData: NewTaskData): void {
+  onCloseAddTask(): void {
     this.isAddingTask = false;
   }
 }
